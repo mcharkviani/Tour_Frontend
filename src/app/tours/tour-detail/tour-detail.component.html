@@ -1,0 +1,26 @@
+<!--<button (click)="getTour()">Show Details</button>-->
+<!--<p>{{tour | json}}</p>-->
+<!--<p>{{tour.company}}</p>-->
+<!--<p>{{tour.country}}</p>-->
+
+<!--<p>Details</p>-->
+
+<div class="container">
+  <div class="row top">
+    <div class="col-md-4">
+      <img mat-card-image src="{{url}}/{{tour.image.slice(tour.image.indexOf('/uploads'))}}" style=" height: 300px; width:300px;" alt="Undefined photo">
+    </div>
+    <div class="col-md-8">
+      <h3>{{tour.address}}, {{tour.country}}</h3>
+      <h5>{{tour.price | currency: 'USD':'symbol' : '1.2-2'}}</h5>
+      <i>Contact Info: {{tour.email}}, {{tour.phone}}</i>
+      <star-rating value="{{tour.rating}}" totalstars="5" checkedcolor="red" uncheckedcolor="black" size="24px" readonly="true"></star-rating>
+      <hr>
+      <p>{{tour.description}}</p>
+    </div>
+  </div>
+  <hr>
+  <i class="material-icons is-pointer" style="color: royalblue; " (click)="goBack()">
+    arrow_back
+  </i>
+</div>

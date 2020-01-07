@@ -1,0 +1,88 @@
+<mat-toolbar>
+  <span style="padding: 40px">Add New Tour</span>
+</mat-toolbar>
+
+  <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+<!--      {{registrationForm.value | json}}-->
+      <div class="form-group">
+        <div class="example-container" >
+          <mat-form-field>
+            <input matInput placeholder="Company" [class.is-invalid]="companyName.invalid && companyName.touched" formControlName="company">
+                  <div *ngIf="companyName.invalid && companyName.touched" class="text-danger">
+                    <small class="text-danger" *ngIf="companyName.errors?.required">Company is required</small>
+                    <small class="text-danger" *ngIf="companyName.errors?.minlength">Company must be at least {{companyName.errors?.minlength.requiredLength}} characters</small>
+                  </div>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput placeholder="Phone" [class.is-invalid]="phone.invalid && phone.touched" formControlName="phone">
+            <div *ngIf="phone.invalid && phone.touched" class="text-danger">
+              <small class="text-danger" *ngIf="phone.errors?.required">Phone is required</small>
+              <small class="text-danger" *ngIf="phone.errors?.pattern">Phone must be valid. </small>
+              <small class="text-danger" *ngIf="phone.errors?.minlength">Phone must be at least {{phone.errors?.minlength.requiredLength}} characters</small>
+            </div>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput placeholder="Email" [class.is-invalid]="email.invalid && email.touched" formControlName="email">
+            <div *ngIf="email.invalid && email.touched" class="text-danger">
+              <small class="text-danger" *ngIf="email.errors?.required">Email is required</small>
+              <small class="text-danger" *ngIf="email.errors?.email">Email must be a valid email address</small>
+            </div>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput placeholder="Country" [class.is-invalid]="country.invalid && country.touched" formControlName="country">
+            <div *ngIf="country.invalid && country.touched" class="text-danger">
+              <small class="text-danger" *ngIf="country.errors?.required">Country is required</small>
+              <small class="text-danger" *ngIf="country.errors?.minlength">Country must be at least {{country.errors?.minlength.requiredLength}} characters</small>
+            </div>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput placeholder="City" [class.is-invalid]="address.invalid && address.touched" formControlName="address">
+            <div *ngIf="address.invalid && address.touched" class="text-danger">
+              <small class="text-danger" *ngIf="address.errors?.required">City is required</small>
+              <small class="text-danger" *ngIf="address.errors?.minlength">City must be at least {{address.errors?.minlength.requiredLength}} characters</small>
+            </div>
+          </mat-form-field>
+
+          <mat-form-field>
+            <textarea matInput placeholder="Description" [class.is-invalid]="description.invalid && description.touched" formControlName="description"></textarea>
+            <div *ngIf="description.invalid && description.touched" class="text-danger">
+              <small class="text-danger" *ngIf="description.errors?.required">Description is required</small>
+              <small class="text-danger" *ngIf="description.errors?.minlength">Description must be at least {{description.errors?.minlength.requiredLength}} characters</small>
+            </div>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput placeholder="Price" [class.is-invalid]="price.invalid && price.touched" formControlName="price">
+            <div *ngIf="price.invalid && price.touched" class="text-danger">
+              <small class="text-danger" *ngIf="price.errors?.required">Price is required</small>
+              <small class="text-danger" *ngIf="price.errors?.pattern">Price must be valid</small>
+            </div>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-select placeholder="Select Rating" [class.is-invalid]="rating.invalid && rating.touched" formControlName="rating">
+              <mat-option value="1">1</mat-option>
+              <mat-option value="2">2</mat-option>
+              <mat-option value="3">3</mat-option>
+              <mat-option value="4">4</mat-option>
+              <mat-option value="5">5</mat-option>
+            </mat-select>
+            <div *ngIf="rating.invalid && rating.touched" class="text-danger">
+              <small class="text-danger" *ngIf="rating.errors?.required">Rating is required</small>
+            </div>
+          </mat-form-field>
+
+          <input type="file" id="fileInput" (change)="onFile($event)" [class.is-invalid]="image.invalid && image.touched" formControlName="image">
+          <div *ngIf="image.invalid && image.touched" class="text-danger">
+            <small class="text-danger" *ngIf="image.errors?.required">Image is required</small>
+          </div>
+
+          <button mat-raised-button color="primary">Submit</button>
+        </div>
+      </div>
+    </form>
+

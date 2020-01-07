@@ -1,0 +1,55 @@
+<!--<button mat-raised-button (click)="getContacts()">Show Contacts</button>-->
+<!--<ul *ngFor="let contact of tours; let i = index">-->
+<!--  <li (click)="onSelect(contact)">{{contact.firstName}}</li>-->
+<!--</ul>-->
+
+<!--<ul class="items">-->
+<!--  <li *ngFor="let contact of tours">-->
+<!--    <span class="badge" (click)="onSelect(contact)">{{contact._id}}</span> {{contact.firstName}}-->
+<!--    <span>-->
+<!--&lt;!&ndash;      <button (click)="deleteContact(contact._id)">Delete</button>&ndash;&gt;-->
+<!--      <button mat-button (click)="openDialog(contact._id)">Delete me </button>-->
+<!--    </span>-->
+<!--  </li>-->
+<!--</ul>-->
+
+<!--<h1>{{errorMessage}}</h1>-->
+
+<button mat-raised-button color="primary" style="left: 120px; top: 15px;" (click)="addTour()">Add New Tour</button>
+<hr>
+
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-4" *ngFor="let tour of tours | paginate: {itemsPerPage:6, currentPage: p}">
+      <mat-card class="example-card">
+        <mat-card-header (click)="onSelect(tour)" class="is-pointer">
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title>{{tour.address}}</mat-card-title>
+          <mat-card-subtitle>{{tour.country}}</mat-card-subtitle>
+        </mat-card-header>
+        <img class="is-pointer" (click)="onSelect(tour)" mat-card-image src="{{url}}/{{tour.image.slice(tour.image.indexOf('/uploads'))}}" style="height: 180px;" alt="Undefined photo">
+<!--        <div [ngStyle]="{'background-image': 'url(' + '{{url}}' + '{{tour.image.slice(tour.image.indexOf(\'/uploads\'))}}' + ')'}"></div>-->
+
+        <mat-card-content (click)="onSelect(tour)" class="is-pointer">
+          <p>
+            {{ (tour.description.length>6)? (tour.description | slice:0:90)+'..':(tour.description) }}
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          &nbsp;&nbsp;<i style="color: slategrey; font-size: small">{{tour.email}}</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <i class="material-icons is-pointer" style="color: deeppink">edit</i>
+          <i class="material-icons is-pointer" style="color: darkred" (click)="openDialog(tour._id)">delete</i>
+        </mat-card-actions>
+      </mat-card>
+      <hr>
+    </div>
+
+  </div>
+</div>
+
+<div class="card-footer pb-0 pt-3">
+  <pagination-controls (pageChange)="p =$event" style="float: right"></pagination-controls>
+</div>
+
+
