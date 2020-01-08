@@ -38,6 +38,7 @@ export class TourDetailComponent implements OnInit, OnDestroy {
           console.log(error);
       });
   }
+
   goBack() {
     this.router.navigate(['/tours']);
   }

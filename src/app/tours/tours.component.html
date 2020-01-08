@@ -1,20 +1,3 @@
-<!--<button mat-raised-button (click)="getContacts()">Show Contacts</button>-->
-<!--<ul *ngFor="let contact of tours; let i = index">-->
-<!--  <li (click)="onSelect(contact)">{{contact.firstName}}</li>-->
-<!--</ul>-->
-
-<!--<ul class="items">-->
-<!--  <li *ngFor="let contact of tours">-->
-<!--    <span class="badge" (click)="onSelect(contact)">{{contact._id}}</span> {{contact.firstName}}-->
-<!--    <span>-->
-<!--&lt;!&ndash;      <button (click)="deleteContact(contact._id)">Delete</button>&ndash;&gt;-->
-<!--      <button mat-button (click)="openDialog(contact._id)">Delete me </button>-->
-<!--    </span>-->
-<!--  </li>-->
-<!--</ul>-->
-
-<!--<h1>{{errorMessage}}</h1>-->
-
 <button mat-raised-button color="primary" style="left: 120px; top: 15px;" (click)="addTour()">Add New Tour</button>
 <hr>
 
@@ -38,7 +21,7 @@
         </mat-card-content>
         <mat-card-actions>
           &nbsp;&nbsp;<i style="color: slategrey; font-size: small">{{tour.email}}</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <i class="material-icons is-pointer" style="color: deeppink">edit</i>
+          <i class="material-icons is-pointer" style="color: deeppink" [routerLink]="['/tours/edit', tour._id]">edit</i>
           <i class="material-icons is-pointer" style="color: darkred" (click)="openDialog(tour._id)">delete</i>
         </mat-card-actions>
       </mat-card>

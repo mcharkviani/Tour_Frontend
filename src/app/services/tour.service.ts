@@ -32,9 +32,9 @@ export class TourService {
     );
   }
 
-  updateTour(id: any, tour: ITour): Observable<ITour> {
-    return this.http.put<ITour>(`${this.url}/edit/${id}`, tour).pipe(
-      map(() => tour),
+  updateTour(id: string, tour: ITour): Observable<ITour> {
+    return this.http.put<ITour>(`${this.url}/${id}`, tour).pipe(
+      map((data) => data),
       catchError(this.errorHandler)
     );
   }

@@ -2,7 +2,6 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
 import {TourService} from '../../services/tour.service';
 import {Router} from '@angular/router';
-import {HttpClient} from '@angular/common/http';
 import {Subscription} from 'rxjs';
 
 @Component({
@@ -42,7 +41,7 @@ export class TourAddComponent implements OnInit, OnDestroy {
   get image() {
     return this.registrationForm.get('image');
   }
-  constructor(private fb: FormBuilder, private service: TourService, private router: Router, private http: HttpClient) { }
+  constructor(private fb: FormBuilder, private service: TourService, private router: Router) { }
 
   registrationForm = this.fb.group({
     company: ['', [Validators.required, Validators.minLength(3)]],
@@ -53,7 +52,7 @@ export class TourAddComponent implements OnInit, OnDestroy {
     description: ['', [Validators.required, Validators.minLength(5)]],
     price: ['', [Validators.required, Validators.pattern(/^[+-]?\d+(\.\d+)?$/)]],
     rating: ['', [Validators.required]],
-    image: [null, [Validators.required]],
+    image: ['', [Validators.required]],
   });
 
   ngOnInit() {
@@ -61,15 +60,15 @@ export class TourAddComponent implements OnInit, OnDestroy {
 
   onSubmit() {
     const formData = new FormData();
-    formData.append('company', this.registrationForm.get('company').value);
-    formData.append('phone', this.registrationForm.get('phone').value);
-    formData.append('email', this.registrationForm.get('email').value);
-    formData.append('address', this.registrationForm.get('address').value);
-    formData.append('country', this.registrationForm.get('country').value);
-    formData.append('description', this.registrationForm.get('description').value);
-    formData.append('price', this.registrationForm.get('price').value);
-    formData.append('rating', this.registrationForm.get('rating').value);
-    formData.append('image', this.registrationForm.get('image').value);
+    formData.append('company', this.companyName.value);
+    formData.append('phone', this.phone.value);
+    formData.append('email', this.email.value);
+    formData.append('address', this.address.value);
+    formData.append('country', this.country.value);
+    formData.append('description', this.description.value);
+    formData.append('price', this.price.value);
+    formData.append('rating', this.rating.value);
+    formData.append('image', this.image.value);
 
     console.log( 'formData', formData);
 
